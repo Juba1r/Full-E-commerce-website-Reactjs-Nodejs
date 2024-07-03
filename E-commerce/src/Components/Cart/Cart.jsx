@@ -1,7 +1,6 @@
 import './Cart.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { cartActions } from '../Redux/Store';
-import PropTypes from 'prop-types';
+import { removeFromCart } from '../Redux/features/cartSlice';
 
 function Cart({ onClose }) {
     const cartItems = useSelector((state) => state.cart.items);
@@ -9,7 +8,7 @@ function Cart({ onClose }) {
     const dispatch = useDispatch();
 
     const removeItemHandler = (id) => {
-        dispatch(cartActions.removeFromCart(id));
+        dispatch(removeFromCart(id));
     };
 
     return (

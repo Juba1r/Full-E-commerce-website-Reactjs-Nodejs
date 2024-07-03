@@ -3,8 +3,8 @@ import './Item.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../Redux/Store';
 import ProductDetails from '../ProductDetails/ProductDetails';
+import { addToCart } from '../Redux/features/cartSlice';
 
 function Item() {
     const [userData, setData] = useState([]);
@@ -28,7 +28,7 @@ function Item() {
     };
 
     const addToCartHandler = (product) => {
-        dispatch(cartActions.addToCart(product));
+        dispatch(addToCart(product));
     };
 
     return (
