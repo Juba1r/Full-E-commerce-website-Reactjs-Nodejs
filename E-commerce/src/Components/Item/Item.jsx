@@ -13,6 +13,7 @@ function Item() {
             });
     }, []);
 
+    
     return (
         <div className="product-list">
             {userData.map((data) => {
@@ -21,7 +22,11 @@ function Item() {
                         <img src={data.image} alt={data.title} className="product-image" />
                         <h2 className="product-title">{data.title}</h2>
                         <p className="product-price">${data.price}</p>
-                        <p className="product-description">{data.description}</p>
+                        <p className="product-rating">Rating: {data.rating.rate}</p>
+                        {/* <p className="product-description">{data.description}</p> */}
+                        <button className="add-to-cart-button">
+                            Add to Cart
+                        </button>
                     </div>
                 );
             })}
