@@ -1,0 +1,84 @@
+/* Cart.css */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.cart {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.cart h2 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.close-cart-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-cart-button:hover {
+    background: #c0392b;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-item-image {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.remove-item-button {
+    border: none;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-item-button:hover {
+    background: #c0392b;
+}

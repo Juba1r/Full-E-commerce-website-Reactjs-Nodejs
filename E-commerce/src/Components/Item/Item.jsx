@@ -1,9 +1,15 @@
+// Item.js
 import './Item.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../Redux/Store';
+import ProductDetails from '../ProductDetails/ProductDetails';
 
 function Item() {
     const [userData, setData] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         axios.get('https://fakestoreapi.com/products?limit=5')
@@ -13,7 +19,18 @@ function Item() {
             });
     }, []);
 
-    
+    const viewDetails = (product) => {
+        setSelectedProduct(product);
+    };
+
+    const closeDetails = () => {
+        setSelectedProduct(null);
+    };
+
+    const addToCartHandler = (product) => {
+        dispatch(cartActions.addToCart(product));
+    };
+
     return (
         <div className="product-list">
             {userData.map((data) => {
@@ -23,18 +40,25 @@ function Item() {
                         <h2 className="product-title">{data.title}</h2>
                         <p className="product-price">${data.price}</p>
                         <p className="product-rating">Rating: {data.rating.rate}</p>
-                        {/* <p className="product-description">{data.description}</p> */}
-                        <button className="add-to-cart-button">
+                        <button className="view-details-button" onClick={() => viewDetails(data)}>
+                            View Details
+                        </button>
+                        <button className="add-to-cart-button" onClick={() => addToCartHandler(data)}>
                             Add to Cart
                         </button>
                     </div>
                 );
             })}
+            {selectedProduct && (
+                <ProductDetails product={selectedProduct} onClose={closeDetails} />
+            )}
         </div>
     );
 }
 
 export default Item;
+
+
 
 
 
